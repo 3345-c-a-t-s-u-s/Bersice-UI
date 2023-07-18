@@ -654,7 +654,7 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 			Move.Position = UDim2.new(0.0500000007, 0, 0.524999976, 0)
 			Move.Size = UDim2.new(0.899999976, 0, 0.899999976, 0)
 			Move.SizeConstraint = Enum.SizeConstraint.RelativeYY
-			Move.ZIndex = 15
+			Move.ZIndex = 12
 
 			UICorner_3.CornerRadius = UDim.new(0.5, 0)
 			UICorner_3.Parent = Move
