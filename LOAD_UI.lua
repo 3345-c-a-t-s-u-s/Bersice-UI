@@ -99,9 +99,9 @@ local function StartScriptLoaded()
 	for i=0,10 do task.wait()
 		local target = loadmove.Size.X.Scale + Random.new():NextNumber(0.3,0.4)
 		local time_ = Random.new():NextNumber(0.5,1)
-		wait(time_)
+		wait(0.1)
 		game:GetService('TweenService'):Create(loadmove,TweenInfo.new(time_),{Size = UDim2.new(target,0,2,0)}):Play()
-		
+		wait(time_)
 	end
 	
 	game:GetService('TweenService'):Create(loadmove,TweenInfo.new(0.1),{Size = UDim2.new(1,0,2,0)}):Play()
