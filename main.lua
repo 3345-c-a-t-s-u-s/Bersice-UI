@@ -1,5 +1,5 @@
 local Bersice = {}
-
+_G.UIVERDIS = 0.5
 local Tween = game:GetService('TweenService')
 local LocalPlayer = game:WaitForChild('Players').LocalPlayer
 local InputService = game:GetService('UserInputService')
@@ -52,7 +52,7 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 	local dragSpeed = 0.1
 	local dragStart = nil
 	local startPos = nil
-	
+
 	local DecTabs = {}
 	local Movement = Instance.new("Frame")
 
@@ -62,7 +62,7 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 	Movement.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Movement.BorderSizePixel = 0
 	Movement.Size = UDim2.new(1, 0, 0.100000001, 0)
-	
+
 	local BersiceLib = Instance.new("ScreenGui")
 	local Frame = Instance.new("Frame")
 	local UICorner = Instance.new("UICorner")
@@ -82,13 +82,13 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 	local UICorner_5 = Instance.new("UICorner")
 	local UIStroke = Instance.new("UIStroke")
 	local cancel = Instance.new("TextButton")
-	
+
 	UIListLayout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(function()
 		Tween:Create(ScrollingFrame,TweenInfo.new(0.1),{CanvasSize = UDim2.new(0,0,0,UIListLayout.AbsoluteContentSize.Y + 15)}):Play()
 	end)
-	
+
 	Movement.Parent = Frame
-	
+
 	BersiceLib.Name = TitleWindow or "Bersice Lib"
 	BersiceLib.Parent = CoreGui
 	BersiceLib.IgnoreGuiInset = true
@@ -247,12 +247,12 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 	cancel.TextScaled = true
 	cancel.TextSize = 14.000
 	cancel.TextWrapped = true
-	
+
 	function MAC_WINDOW:NewTab<tab_unknow...>(tab_txt:string)
 		--[[button]]
 		local MAC_TAB = {}
 		tab_txt = tostring(tab_txt)
-		
+
 		local Button = Instance.new("TextButton")
 		local UICorner = Instance.new("UICorner")
 		local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
@@ -280,7 +280,7 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 		UIAspectRatioConstraint.Parent = Button
 		UIAspectRatioConstraint.AspectRatio = 4
 		UIAspectRatioConstraint.AspectType = Enum.AspectType.ScaleWithParentSize
-		
+
 		UIStroke.Transparency = 0.800
 		UIStroke.Color = Color3.fromRGB(255, 255, 255)
 		UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
@@ -294,11 +294,11 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 		local ScrollingFrame = Instance.new("ScrollingFrame")
 		local UIListLayout = Instance.new("UIListLayout")
 		local TITLE = Instance.new("TextLabel")
-		
+
 		UIListLayout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(function()
 			Tween:Create(ScrollingFrame,TweenInfo.new(0.1),{CanvasSize = UDim2.new(0,0,0,UIListLayout.AbsoluteContentSize.Y + 15)}):Play()
 		end)
-		
+
 		tab.Name = "tab"
 		tab.Parent = Controller
 		tab.BackgroundColor3 = Color3.fromRGB(22, 22, 22)
@@ -377,15 +377,15 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 		TITLE.TextWrapped = true
 		TITLE.TextXAlignment = Enum.TextXAlignment.Left
 		TITLE.ZIndex = 30
-		
+
 		if #DecTabs == 0 then
 			tab.Visible = true
 		else
 			tab.Visible = false
 		end
-		
+
 		table.insert(DecTabs,tab)
-		
+
 		local function EventText()
 			for i = 1, #tab_txt do
 				TITLE.Text = string.sub(tab_txt, 1, i)
@@ -393,7 +393,7 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 
 			end
 		end
-		
+
 		Button.MouseButton1Click:Connect(function()
 			Create_Ripple(Button) 
 			for i,v in ipairs(DecTabs) do
@@ -405,15 +405,15 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 			end
 			EventText()
 		end)
-		
+
 		Button.MouseEnter:Connect(function()
 			Tween:Create(UIAspectRatioConstraint,TweenInfo.new(0.3,Enum.EasingStyle.Back),{AspectRatio = 3.5}):Play()
 		end)
-		
+
 		Button.MouseLeave:Connect(function()
 			Tween:Create(UIAspectRatioConstraint,TweenInfo.new(0.3,Enum.EasingStyle.Back),{AspectRatio = 4}):Play()
 		end)
-		
+
 		function MAC_TAB:NewButton(n9:string,callback:FunctionalTest):() callback = callback or function() end
 			local Button = Instance.new("Frame")
 			local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
@@ -434,7 +434,7 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 			UIAspectRatioConstraint.Parent = Button
 			UIAspectRatioConstraint.AspectRatio = 7
 			UIAspectRatioConstraint.AspectType = Enum.AspectType.ScaleWithParentSize
-			
+
 			UIStroke.Thickness = 2.000
 			UIStroke.Transparency = 0.500
 			UIStroke.Color = Color3.fromRGB(255, 255, 255)
@@ -487,21 +487,21 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 			ButtonClicked.TextColor3 = Color3.fromRGB(0, 0, 0)
 			ButtonClicked.TextSize = 14.000
 			ButtonClicked.TextTransparency = 1.000
-			
+
 			ButtonClicked.MouseLeave:Connect(function()
 				Tween:Create(UIStroke,TweenInfo.new(0.45),{Transparency = 0.5}):Play()
 			end)
-			
+
 			ButtonClicked.MouseEnter:Connect(function()
 				Tween:Create(UIStroke,TweenInfo.new(0.45),{Transparency = 0.1}):Play()
 			end)
-			
+
 			ButtonClicked.MouseButton1Click:Connect(function()
 				Create_Ripple(Button)
 				callback()
 			end)
 		end
-		
+
 		function MAC_TAB:NewTitle(ntr:string | string)
 			local Title = Instance.new("Frame")
 			local UICorner = Instance.new("UICorner")
@@ -553,10 +553,10 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 			UIGradient.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(0.87, 0.43), NumberSequenceKeypoint.new(1.00, 1.00)}
 			UIGradient.Parent = TitleMain
 		end
-		
+
 		function MAC_TAB:NewToggle(Title9:string,info:boolean,callback:FunctionalTest)
 			callback = callback or function() end
-			
+
 			local Toggle = Instance.new("Frame")
 			local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
 			local UIStroke = Instance.new("UIStroke")
@@ -704,7 +704,7 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 				end
 			end
 			ToggleTo(info)
-			
+
 			ButtonClicked.MouseButton1Click:Connect(function()
 				info = not info
 				Create_Ripple(Toggle)
@@ -720,7 +720,7 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 				end
 			end
 		end
-		
+
 		function MAC_TAB:NewTextBox(Title9:string,InputText:string,Info:string,callback:FunctionalTest)
 			callback = callback or function() end
 			local TextBox = Instance.new("Frame")
@@ -813,25 +813,25 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 
 			UICorner_3.CornerRadius = UDim.new(0.349999994, 0)
 			UICorner_3.Parent = Ads
-			
+
 			Ads.FocusLost:Connect(function()
 				Create_Ripple(TextBox)
 				callback(Ads.Text)
 			end)
 			local onisa = {}
-			
+
 			function onisa:Set(value)
 				Ads.Text = value
 				callback(value)
 			end
-			
+
 			function onisa:Get()
 				return tostring(Ads.Text)
 			end
-			
+
 			return onisa
 		end
-		
+
 		function MAC_TAB:NewKeybind(Title9:string,Info:Enum.KeyCode,callback:FunctionalTest)
 			callback = callback or function() end
 			local function GetKeyString(Key : Enum.KeyCode)
@@ -938,7 +938,7 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 			Key.TextScaled = true
 			Key.TextSize = 14.000
 			Key.TextWrapped = true
-			
+
 			local is_d = false
 			ButtonClicked.MouseButton1Click:Connect(function()
 				if is_d then
@@ -955,7 +955,7 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 				Key.Text = "..."
 				repeat task.wait() until targetloaded
 				is_d = false
-				
+
 				if targetloaded then
 					Key.Text = GetKeyString(targetloaded) or "None"
 					callback(targetloaded)
@@ -971,7 +971,7 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 				callback(Valuee)
 			end
 		end
-		
+
 		function MAC_TAB:NewSlider(SliderTitle:string,Min:number,Max:number,callback:FunctionalTest)
 			callback = callback or function() end
 			Min = Min or 1
@@ -1064,23 +1064,23 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 
 			UICorner_3.CornerRadius = UDim.new(0.300000012, 0)
 			UICorner_3.Parent = Frame
-			
+
 			local IsDunp = false
-			
+
 			Untarl.InputBegan:Connect(function(Input)
 				if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
 					IsDunp = true
 					Tween:Create(Frame,TweenInfo.new(0.3),{BackgroundColor3 = Color3.fromRGB(141, 141, 141)}):Play()
 				end
 			end)
-			
+
 			Untarl.InputEnded:Connect(function(Input)
 				if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
 					IsDunp = false
 					Tween:Create(Frame,TweenInfo.new(0.3),{BackgroundColor3 = Color3.fromRGB(102, 102, 102)}):Play()
 				end
 			end)
-			
+
 			InputService.InputChanged:Connect(function(Input)
 				if IsDunp and Input.UserInputType == Enum.UserInputType.MouseMovement then
 					local SizeScale = math.clamp(((Input.Position.X - Untarl.AbsolutePosition.X) / Untarl.AbsoluteSize.X), 0, 1)
@@ -1102,11 +1102,11 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 				callback(tonumber(Value))
 			end
 		end
-		
+
 		function MAC_TAB:NewDropdown(DB_S:string,info:{string},callback:FunctionalTest)
 			callback = callback or function() end
 			info = info or {}
-			
+
 			local Dropdown = Instance.new("Frame")
 			local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
 			local UIStroke = Instance.new("UIStroke")
@@ -1125,11 +1125,11 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 			local ScrollingFramea = Instance.new("ScrollingFrame")
 			local UIListLayout = Instance.new("UIListLayout")
 			local DropShadow = Instance.new("ImageLabel")
-			
+
 			UIListLayout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(function()
 				Tween:Create(ScrollingFramea,TweenInfo.new(0.1),{CanvasSize = UDim2.new(0,0,0,UIListLayout.AbsoluteContentSize.Y + 15)}):Play()
 			end)
-			
+
 			Dropdown.Name = "Dropdown"
 			Dropdown.Parent = ScrollingFrame
 			Dropdown.BackgroundColor3 = Color3.fromRGB(65, 65, 65)
@@ -1284,8 +1284,8 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 			DropShadow.ImageTransparency = 0.500
 			DropShadow.ScaleType = Enum.ScaleType.Slice
 			DropShadow.SliceCenter = Rect.new(49, 49, 450, 450)
-			
-			
+
+
 			local function Db_Toggle(value)
 				local CurrentTime = 0.15
 				if value then
@@ -1302,18 +1302,18 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 				end
 			end
 			Db_Toggle(false)
-			
+
 			local sideogg = false
-			
+
 			img.InputBegan:Connect(function(us)
 				if us.UserInputType == Enum.UserInputType.Touch or us.UserInputType == Enum.UserInputType.MouseButton1 then
 					sideogg = not sideogg
 					Create_Ripple(Main)
 					Db_Toggle(sideogg)
-					
+
 				end
 			end)
-			
+
 			local function CreateUI()
 				local DBButton = Instance.new("TextButton")
 				local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
@@ -1348,47 +1348,54 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 				UIStroke.Parent = DBButton
 				return DBButton
 			end
-			
+
 			local function Add()
 				for i,v in ipairs(info) do
 					local ui = CreateUI()
-						ui.Text = tostring(v)
-						ui.MouseButton1Click:Connect(function()
-							Create_Ripple(ui)
-							Search.Text = tostring(v)
-							callback(v)
-						end)
+					ui.Text = tostring(v)
+					ui.MouseButton1Click:Connect(function()
+						Create_Ripple(ui)
+						Search.Text = tostring(v)
+						callback(v)
+					end)
 				end
 			end
-			
+
 			local function RefreshDB()
 				for i,v in ipairs(ScrollingFramea:GetChildren()) do
 					if v:isA('TextButton') then
-						
+
 						v:Destroy()
 					end
 				end
 				Add()
 			end
-			
+
 			RefreshDB()
-			
+
 			return function(newlist)
 				info = newlist
 				RefreshDB()
 			end
 		end
-		
-		
+
+
 		return MAC_TAB;
 	end
-	
+
 	local function TOGGLE()
 		BersiceLib.Enabled = (not BersiceLib.Enabled) or (false)
 	end
-	
+
 	cancel.MouseButton1Click:Connect(function()
 		TOGGLE()
+	end)
+	
+	
+	InputService.InputBegan:Connect(function(n9)
+		if n9.KeyCode == Enum.KeyCode.X then
+			TOGGLE()
+		end
 	end)
 	
 	local function updateInput<Input...>(input)
