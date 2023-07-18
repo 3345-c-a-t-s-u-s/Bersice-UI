@@ -102,7 +102,7 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 	Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Frame.BorderSizePixel = 0
 	Frame.Position = UDim2.new(0.5, 0, 0.5, 0)
-	Frame.Size = UDim2.new(0.75, 0, 0.400000006, 0)
+	Frame.Size = UDim2.new(0.6, 0, 0.5, 0)
 	Frame.SizeConstraint = Enum.SizeConstraint.RelativeYY
 
 	UICorner.CornerRadius = UDim.new(0, 3)
