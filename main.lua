@@ -84,7 +84,7 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 	local cancel = Instance.new("TextButton")
 	
 	UIListLayout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(function()
-		Tween:Create(ScrollingFrame,TweenInfo.new(0.1),{CanvasSize = UDim2.new(0,0,0,UIListLayout.AbsoluteContentSize.Y)}):Play()
+		Tween:Create(ScrollingFrame,TweenInfo.new(0.1),{CanvasSize = UDim2.new(0,0,0,UIListLayout.AbsoluteContentSize.Y + 15)}):Play()
 	end)
 	
 	Movement.Parent = Frame
@@ -296,7 +296,7 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 		local TITLE = Instance.new("TextLabel")
 		
 		UIListLayout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(function()
-			Tween:Create(ScrollingFrame,TweenInfo.new(0.1),{CanvasSize = UDim2.new(0,0,0,UIListLayout.AbsoluteContentSize.Y)}):Play()
+			Tween:Create(ScrollingFrame,TweenInfo.new(0.1),{CanvasSize = UDim2.new(0,0,0,UIListLayout.AbsoluteContentSize.Y + 15)}):Play()
 		end)
 		
 		tab.Name = "tab"
@@ -1127,7 +1127,7 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 			local DropShadow = Instance.new("ImageLabel")
 			
 			UIListLayout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(function()
-				Tween:Create(ScrollingFramea,TweenInfo.new(0.1),{CanvasSize = UDim2.new(0,0,0,UIListLayout.AbsoluteContentSize.Y)}):Play()
+				Tween:Create(ScrollingFramea,TweenInfo.new(0.1),{CanvasSize = UDim2.new(0,0,0,UIListLayout.AbsoluteContentSize.Y + 15)}):Play()
 			end)
 			
 			Dropdown.Name = "Dropdown"
