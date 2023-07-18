@@ -97,15 +97,17 @@ local function StartScriptLoaded()
 	task.wait(1)
 	
 	for i=0,10 do task.wait()
-		local target = loadmove.Size.X.Scale + Random.new():NextNumber(0.1,0.4)
-		local time = Random.new():NextNumber(0.5,1)
-		wait(time)
-		game:GetService('TweenService'):Create(loadmove,TweenInfo.new(time),{Size = UDim2.new(target,0,2,0)}):Play()
+		local target = loadmove.Size.X.Scale + Random.new():NextNumber(0.3,0.4)
+		local time_ = Random.new():NextNumber(0.5,1)
+		wait(time_)
+		game:GetService('TweenService'):Create(loadmove,TweenInfo.new(time_),{Size = UDim2.new(target,0,2,0)}):Play()
 		
 	end
 	
-	game:GetService('TweenService'):Create(loadmove,TweenInfo.new(time),{Size = UDim2.new(1,0,2,0)}):Play()
+	game:GetService('TweenService'):Create(loadmove,TweenInfo.new(0.1),{Size = UDim2.new(1,0,2,0)}):Play()
 	
+	loaded:Destroy()
+	return
 end
 
 StartScriptLoaded()
