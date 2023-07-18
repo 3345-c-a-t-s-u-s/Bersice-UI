@@ -21,7 +21,7 @@ local function StartScriptLoaded()
 	Frame.BackgroundTransparency = 0.150
 	Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Frame.BorderSizePixel = 0
-	Frame.Position = UDim2.new(0.5, 0, 0.5, 0)
+	Frame.Position = UDim2.new(0.5, 0, -2, 0)
 	Frame.Size = UDim2.new(0.400000006, 0, 0.400000006, 0)
 	Frame.SizeConstraint = Enum.SizeConstraint.RelativeYY
 
@@ -94,6 +94,8 @@ local function StartScriptLoaded()
 	DropShadow.ScaleType = Enum.ScaleType.Slice
 	DropShadow.SliceCenter = Rect.new(49, 49, 450, 450)
 	
+	game:GetService('TweenService'):Create(Frame,TweenInfo.new(1),{Position = UDim2.new(0.5,0,0.5,0)}):Play()
+	
 	task.wait(1)
 	
 	for i=0,10 do task.wait()
@@ -102,10 +104,15 @@ local function StartScriptLoaded()
 		wait(0.1)
 		game:GetService('TweenService'):Create(loadmove,TweenInfo.new(time_),{Size = UDim2.new(target,0,2,0)}):Play()
 		wait(time_)
+		if target > 1 then
+			break
+		end
 	end
 	
 	game:GetService('TweenService'):Create(loadmove,TweenInfo.new(0.1),{Size = UDim2.new(1,0,2,0)}):Play()
 	
+	game:GetService('TweenService'):Create(Frame,TweenInfo.new(1),{Position = UDim2.new(0.5,0,2,0)}):Play()
+	wait(1.1)
 	loaded:Destroy()
 	return
 end
