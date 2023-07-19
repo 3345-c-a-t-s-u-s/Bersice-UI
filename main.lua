@@ -712,12 +712,10 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 				callback(info)
 			end)
 			return function(value)
-				if value then
-					info = value
-					Create_Ripple(Toggle)
-					ToggleTo(info)
-					callback(info)
-				end
+				info = value
+				Create_Ripple(Toggle)
+				ToggleTo(info)
+				callback(info)
 			end
 		end
 
@@ -1390,14 +1388,14 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 	cancel.MouseButton1Click:Connect(function()
 		TOGGLE()
 	end)
-	
-	
+
+
 	InputService.InputBegan:Connect(function(n9)
 		if n9.KeyCode == Enum.KeyCode.X then
 			TOGGLE()
 		end
 	end)
-	
+
 	local function updateInput<Input...>(input)
 		local delta = input.Position - dragStart
 		local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
