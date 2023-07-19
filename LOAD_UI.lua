@@ -108,9 +108,11 @@ local function StartScriptLoaded()
 			break
 		end
 	end
-
+	TextLabel.Text = "Bedol Hub\n Wait for UI"
+	wait(1)
 	game:GetService('TweenService'):Create(loadmove,TweenInfo.new(0.1),{Size = UDim2.new(1,0,2,0)}):Play()
-
+	wait(0.5)
+	
 	game:GetService('TweenService'):Create(Frame,TweenInfo.new(1),{Position = UDim2.new(0.5,0,2,0)}):Play()
 	wait(1.1)
 	loaded:Destroy()
