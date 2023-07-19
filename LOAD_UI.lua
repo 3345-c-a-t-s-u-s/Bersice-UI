@@ -74,7 +74,7 @@ local function StartScriptLoaded()
 	loadmove.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	loadmove.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	loadmove.BorderSizePixel = 0
-	loadmove.Position = UDim2.new(0, 0, 0.5, 0)
+	loadmove.Position = UDim2.new(-0.25, 0, 0.5, 0)
 	loadmove.Size = UDim2.new(0, 0, 2, 0)
 
 	UICorner_4.CornerRadius = UDim.new(0.5, 0)
@@ -93,11 +93,11 @@ local function StartScriptLoaded()
 	DropShadow.ImageTransparency = 0.500
 	DropShadow.ScaleType = Enum.ScaleType.Slice
 	DropShadow.SliceCenter = Rect.new(49, 49, 450, 450)
-	
+
 	game:GetService('TweenService'):Create(Frame,TweenInfo.new(1),{Position = UDim2.new(0.5,0,0.5,0)}):Play()
-	
+
 	task.wait(1)
-	
+
 	for i=0,10 do task.wait()
 		local target = loadmove.Size.X.Scale + Random.new():NextNumber(0.3,0.4)
 		local time_ = Random.new():NextNumber(0.5,1)
@@ -108,9 +108,9 @@ local function StartScriptLoaded()
 			break
 		end
 	end
-	
+
 	game:GetService('TweenService'):Create(loadmove,TweenInfo.new(0.1),{Size = UDim2.new(1,0,2,0)}):Play()
-	
+
 	game:GetService('TweenService'):Create(Frame,TweenInfo.new(1),{Position = UDim2.new(0.5,0,2,0)}):Play()
 	wait(1.1)
 	loaded:Destroy()
