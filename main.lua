@@ -1101,7 +1101,7 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 			end
 		end
 
-		function MAC_TAB:NewDropdown(DB_S:string,info:{string},callback:FunctionalTest)
+		function MAC_TAB:NewDropdown(DB_S:string,info:{string},callback:FunctionalTest,infodata:string)
 			callback = callback or function() end
 			info = info or {}
 
@@ -1196,7 +1196,7 @@ function Bersice:NewWindow<ScreenGui...>(TitleWindow:string)
 			Search.Size = UDim2.new(0.696279466, 0, 1, 0)
 			Search.ZIndex = 5
 			Search.Font = Enum.Font.GothamBold
-			Search.Text = "Search..."
+			Search.Text = infodata or "Search..."
 			Search.TextColor3 = Color3.fromRGB(255, 255, 255)
 			Search.TextScaled = true
 			Search.TextSize = 14.000
