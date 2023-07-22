@@ -1,3 +1,6 @@
+
+local text = {"Bedol Hub | Loading","Loading Commands","Request API"}
+
 local function StartScriptLoaded()
 	local loaded = Instance.new("ScreenGui")
 	local Frame = Instance.new("Frame")
@@ -103,6 +106,7 @@ local function StartScriptLoaded()
 		local target = loadmove.Size.X.Scale + Random.new():NextNumber(0.3,0.4)
 		local time_ = Random.new():NextNumber(0.5,1)
 		wait(0.1)
+		TextLabel.Text = text[i]
 		game:GetService('TweenService'):Create(loadmove,TweenInfo.new(time_),{Size = UDim2.new(target,0,2,0)}):Play()
 		wait(time_)
 		if target > 1 then
@@ -122,9 +126,9 @@ local function StartScriptLoaded()
 		game:GetService('TweenService'):Create(Frame,TweenInfo.new(1),{Position = UDim2.new(0.5,0,2,0)}):Play()
 
 		wait(1.1)
+		
+		loaded:Destroy()
 	end)()
-
-	loaded:Destroy()
 	return
 end
 
