@@ -41,7 +41,8 @@ local function StartScriptLoaded()
 	TextLabel.TextScaled = true
 	TextLabel.TextSize = 14.000
 	TextLabel.TextWrapped = true
-
+	
+	local imgtarget = _G.LOADDED_IMG or "rbxassetid://6862780932"
 	ImageLabel.Parent = Frame
 	ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	ImageLabel.BackgroundTransparency = 1.000
@@ -50,7 +51,7 @@ local function StartScriptLoaded()
 	ImageLabel.Position = UDim2.new(0.242017657, 0, 0.1953125, 0)
 	ImageLabel.Size = UDim2.new(0.5, 0, 0.5, 0)
 	ImageLabel.SizeConstraint = Enum.SizeConstraint.RelativeYY
-	ImageLabel.Image = "rbxassetid://6862780932"
+	ImageLabel.Image = imgtarget
 
 	UICorner_2.CornerRadius = UDim.new(0, 4)
 	UICorner_2.Parent = ImageLabel
@@ -108,19 +109,21 @@ local function StartScriptLoaded()
 			break
 		end
 	end
-	
+
 	TextLabel.Text = "Wait for UI"
 	
-	wait(1)
+	game:GetService('TweenService'):Create(loadmove,TweenInfo.new(0.5),{Size = UDim2.new(1.5,0,2,0)}):Play()
 	
-	game:GetService('TweenService'):Create(loadmove,TweenInfo.new(0.1),{Size = UDim2.new(1.5,0,2,0)}):Play()
-	
-	wait(0.5)
-	
-	game:GetService('TweenService'):Create(Frame,TweenInfo.new(1),{Position = UDim2.new(0.5,0,2,0)}):Play()
-	
-	wait(1.1)
-	
+	coroutine.wrap(function()
+		wait(1)
+
+		wait(0.5)
+
+		game:GetService('TweenService'):Create(Frame,TweenInfo.new(1),{Position = UDim2.new(0.5,0,2,0)}):Play()
+
+		wait(1.1)
+	end)()
+
 	loaded:Destroy()
 	return
 end
