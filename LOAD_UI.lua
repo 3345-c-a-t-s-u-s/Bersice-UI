@@ -42,7 +42,7 @@ local UI = function()
 	Frame.Size = UDim2.new(0.3, 0, 0.3, 0)
 	Frame.SizeConstraint = Enum.SizeConstraint.RelativeYY
 	Frame.ClipsDescendants = true
-	
+
 	UICorner.CornerRadius = UDim.new(0, 4)
 	UICorner.Parent = Frame
 
@@ -68,7 +68,7 @@ local UI = function()
 	title.TextSize = 14.000
 	title.TextWrapped = true
 	title.TextTransparency = 1
-	
+
 	Loadedtitle.Name = "Loadedtitle"
 	Loadedtitle.Parent = Frame
 	Loadedtitle.AnchorPoint = Vector2.new(0.5, 0)
@@ -86,9 +86,9 @@ local UI = function()
 	Loadedtitle.TextTransparency = 0.400
 	Loadedtitle.TextWrapped = true
 	Loadedtitle.TextTransparency = 1
-	
+
 	local imgtarget = (_G.LOADDED_IMG) or ("rbxassetid://6862780932")
-	
+
 	ImageLabel.Parent = Frame
 	ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	ImageLabel.BackgroundTransparency = 1.000
@@ -99,6 +99,7 @@ local UI = function()
 	ImageLabel.SizeConstraint = Enum.SizeConstraint.RelativeYY
 	ImageLabel.Image = imgtarget
 	ImageLabel.ImageTransparency = 1
+	ImageLabel.ScaleType = Enum.ScaleType.Crop
 	
 	UICorner_2.CornerRadius = UDim.new(0, 4)
 	UICorner_2.Parent = ImageLabel
@@ -135,7 +136,7 @@ local UI = function()
 
 	UICorner_4.CornerRadius = UDim.new(0, 4)
 	UICorner_4.Parent = move
-	
+
 	return ScreenGui
 end
 
@@ -143,20 +144,20 @@ local scriptLoadded = function()
 	local ScreenGui = UI()
 	local Frame = ScreenGui:FindFirstChildWhichIsA('Frame')
 	local tark:Frame,ImageLabel:ImageLabel,title:TextLabel,Loadedtitle:TextLabel = Frame:FindFirstChild('tark'),Frame:FindFirstChild('ImageLabel'),Frame:FindFirstChild('title'),Frame:FindFirstChild('Loadedtitle')
-	
+
 	TweenService:Create(Frame,TweenInfo.new(1.5,Enum.EasingStyle.Back),{Size = UDim2.new(0.4,0,0.4,0)}):Play()
-	
+
 	for i,v : UIGradient in ipairs(Frame:GetDescendants()) do
 		if v:isA('UIGradient') then
 			TweenEffect(v)
 		end
 	end
-	
+
 	TweenService:Create(ImageLabel,TweenInfo.new(0.85,Enum.EasingStyle.Sine),{ImageTransparency = 0}):Play()
 	task.wait(0.85)
-	
+
 	TweenService:Create(tark,TweenInfo.new(0.5,Enum.EasingStyle.Sine),{Position = UDim2.new(0.021, 0,0.896, 0)}):Play()
-	
+
 	TweenText(title,0)
 	TweenText(Loadedtitle,0.4)
 	wait(0.3)
@@ -176,7 +177,7 @@ local scriptLoadded = function()
 		TweenService:Create(tark:FindFirstChild('move'),TweenInfo.new(0.4,Enum.EasingStyle.Quad),{Size = UDim2.new(2,0,2,0)}):Play()
 
 		wait(0.9)
-		
+
 		TweenText(title,1)
 		TweenText(Loadedtitle,1)
 		TweenService:Create(tark,TweenInfo.new(0.5,Enum.EasingStyle.Sine),{Position = UDim2.new(0.021, 0,1.5, 0)}):Play()
@@ -186,23 +187,23 @@ local scriptLoadded = function()
 				TweenEffectEnd(v)
 			end
 		end
-		
+
 		TweenService:Create(Frame,TweenInfo.new(1.5,Enum.EasingStyle.Back),{Size = UDim2.new(0.3,0,0.3,0)}):Play()
-		
+
 		wait(1)
 		ScreenGui:Destroy()
 	end)()
-	
+
 	if not game:IsLoaded() then
 		print('Loading Game')
 		game.Loaded:Wait()
 	end
-	
+
 	if not game:FindFirstChild('Workspace') then
 		print('wait for object')
 		game:WaitForChild('Workspace',9999)
 	end
-	
+
 end
 
 return scriptLoadded()
