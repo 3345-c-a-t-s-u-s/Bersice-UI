@@ -1,209 +1,289 @@
-local TweenService = game:GetService('TweenService')
-local Core = game:FindFirstChild('CoreGui') or game:GetService('Players').LocalPlayer.PlayerGui
-local TextList = {"Loading","Loading Commands","Loading UI","Loading Functions","Request API"}
+local core = game:FindFirstChild('CoreGui') or game.Players.LocalPlayer.PlayerGui
+local IMG = "rbxassetid://6862780932"
+local TextList = {"Loading","Loading Commands","Loading UI","Loading Functions","Request API","Loading API","Checking User","Checking Script Stats"}
 
-local TweenEffect = function(UIGradient : UIGradient)
-	TweenService:Create(UIGradient,TweenInfo.new(0.45),{Offset = Vector2.new(2,0)}):Play()
+if _G.LOADDED_IMG ~= nil then
+	IMG = _G.LOADDED_IMG
 end
 
-local TweenText = function(TextLabel : TextLabel | TextButton,TextTransparency : number)
-	TweenService:Create(TextLabel,TweenInfo.new(0.25),{TextTransparency = TextTransparency}):Play()
-end
-
-local TweenEffectEnd = function(UIGradient : UIGradient)
-	TweenService:Create(UIGradient,TweenInfo.new(0.45),{Offset = Vector2.new(-2,0)}):Play()
-end
-
-local UI = function()
+local function start()
 	local ScreenGui = Instance.new("ScreenGui")
 	local Frame = Instance.new("Frame")
+	local DropShadow = Instance.new("ImageLabel")
+	local Title = Instance.new("TextLabel")
+	local UnderTitle = Instance.new("TextLabel")
+	local LoadImg = Instance.new("ImageLabel")
+	local DropShadow_2 = Instance.new("ImageLabel")
 	local UICorner = Instance.new("UICorner")
-	local effect = Instance.new("UIGradient")
-	local title = Instance.new("TextLabel")
-	local Loadedtitle = Instance.new("TextLabel")
-	local ImageLabel = Instance.new("ImageLabel")
+	local LoadedFrame = Instance.new("Frame")
 	local UICorner_2 = Instance.new("UICorner")
-	local effect_2 = Instance.new("UIGradient")
-	local tark = Instance.new("Frame")
-	local UICorner_3 = Instance.new("UICorner")
-	local move = Instance.new("Frame")
-	local UICorner_4 = Instance.new("UICorner")
+	local DropShadow_3 = Instance.new("ImageLabel")
 
-	ScreenGui.Parent = Core
-	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
+	ScreenGui.Parent = core
+	ScreenGui.ResetOnSpawn = false
+	ScreenGui.IgnoreGuiInset = true
+	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
+	
 	Frame.Parent = ScreenGui
-	Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Frame.BackgroundTransparency = 0.200
+	Frame.AnchorPoint = Vector2.new(0.5, 0.5)
+	Frame.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
 	Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Frame.BorderSizePixel = 0
-	Frame.AnchorPoint = Vector2.new(0.5,0.5)
-	Frame.Position = UDim2.new(0.5,0,0.5,0)
-	Frame.Size = UDim2.new(0.3, 0, 0.3, 0)
-	Frame.SizeConstraint = Enum.SizeConstraint.RelativeYY
 	Frame.ClipsDescendants = true
+	Frame.Position = UDim2.new(0.5, 0, 0.5, 0)
+	Frame.Size = UDim2.new(0.5, 0, 0.349999994, 0)
+	Frame.SizeConstraint = Enum.SizeConstraint.RelativeYY
 
-	UICorner.CornerRadius = UDim.new(0, 4)
-	UICorner.Parent = Frame
+	DropShadow.Name = "DropShadow"
+	DropShadow.Parent = Frame
+	DropShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+	DropShadow.BackgroundTransparency = 1.000
+	DropShadow.BorderSizePixel = 0
+	DropShadow.Position = UDim2.new(0.5, 0, 0.5, 0)
+	DropShadow.Rotation = 0.001
+	DropShadow.Size = UDim2.new(1, 47, 1, 47)
+	DropShadow.ZIndex = -5
+	DropShadow.Image = "rbxassetid://6014261993"
+	DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+	DropShadow.ImageTransparency = 0.500
+	DropShadow.ScaleType = Enum.ScaleType.Slice
+	DropShadow.SliceCenter = Rect.new(49, 49, 450, 450)
 
-	effect.Offset = Vector2.new(-2, 0)
-	effect.Rotation = 45
-	effect.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(1.00, 1.00)}
-	effect.Name = "effect"
-	effect.Parent = Frame
+	Title.Name = "Title"
+	Title.Parent = Frame
+	Title.AnchorPoint = Vector2.new(0.5, 0.100000001)
+	Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Title.BackgroundTransparency = 1.000
+	Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Title.BorderSizePixel = 0
+	Title.Position = UDim2.new(0.5, 0, 0.0500000007, 0)
+	Title.Size = UDim2.new(0.949999988, 0, 0.109999999, 0)
+	Title.Font = Enum.Font.GothamBold
+	Title.Text = "Bedol Hub"
+	Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Title.TextScaled = true
+	Title.TextSize = 14.000
+	Title.TextWrapped = true
 
-	title.Name = "title"
-	title.Parent = Frame
-	title.AnchorPoint = Vector2.new(0.5, 0)
-	title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	title.BackgroundTransparency = 1.000
-	title.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	title.BorderSizePixel = 0
-	title.Position = UDim2.new(0.5, 0, 0.0297214668, 0)
-	title.Size = UDim2.new(0.980000019, 0, 0.100000001, 0)
-	title.Font = Enum.Font.GothamBold
-	title.Text = "Bedol Hub"
-	title.TextColor3 = Color3.fromRGB(255, 255, 255)
-	title.TextScaled = true
-	title.TextSize = 14.000
-	title.TextWrapped = true
-	title.TextTransparency = 1
+	UnderTitle.Name = "UnderTitle"
+	UnderTitle.Parent = Frame
+	UnderTitle.AnchorPoint = Vector2.new(0.5, 0.100000001)
+	UnderTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	UnderTitle.BackgroundTransparency = 1.000
+	UnderTitle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	UnderTitle.BorderSizePixel = 0
+	UnderTitle.Position = UDim2.new(0.50000006, 0, 0.155298948, 0)
+	UnderTitle.Size = UDim2.new(0.949999988, 0, 0.0954425335, 0)
+	UnderTitle.Font = Enum.Font.ArialBold
+	UnderTitle.Text = "Loading"
+	UnderTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+	UnderTitle.TextScaled = true
+	UnderTitle.TextSize = 14.000
+	UnderTitle.TextTransparency = 0.500
+	UnderTitle.TextWrapped = true
 
-	Loadedtitle.Name = "Loadedtitle"
-	Loadedtitle.Parent = Frame
-	Loadedtitle.AnchorPoint = Vector2.new(0.5, 0)
-	Loadedtitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Loadedtitle.BackgroundTransparency = 1.000
-	Loadedtitle.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Loadedtitle.BorderSizePixel = 0
-	Loadedtitle.Position = UDim2.new(0.50000006, 0, 0.161345109, 0)
-	Loadedtitle.Size = UDim2.new(0.980000138, 0, 0.0660326183, 0)
-	Loadedtitle.Font = Enum.Font.GothamBold
-	Loadedtitle.Text = "Loading"
-	Loadedtitle.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Loadedtitle.TextScaled = true
-	Loadedtitle.TextSize = 14.000
-	Loadedtitle.TextTransparency = 0.400
-	Loadedtitle.TextWrapped = true
-	Loadedtitle.TextTransparency = 1
+	LoadImg.Name = "LoadImg"
+	LoadImg.Parent = Frame
+	LoadImg.AnchorPoint = Vector2.new(0.5, 0.5)
+	LoadImg.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	LoadImg.BackgroundTransparency = 1.000
+	LoadImg.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	LoadImg.BorderSizePixel = 0
+	LoadImg.Position = UDim2.new(0.49660331, 0, 0.572787225, 0)
+	LoadImg.Size = UDim2.new(0.600000024, 0, 0.600000024, 0)
+	LoadImg.SizeConstraint = Enum.SizeConstraint.RelativeYY
+	LoadImg.ZIndex = 5
+	LoadImg.Image = IMG or "rbxassetid://6862780932"
+	LoadImg.ScaleType = Enum.ScaleType.Crop
 
-	local imgtarget = (_G.LOADDED_IMG) or ("rbxassetid://6862780932")
+	DropShadow_2.Name = "DropShadow"
+	DropShadow_2.Parent = LoadImg
+	DropShadow_2.AnchorPoint = Vector2.new(0.5, 0.5)
+	DropShadow_2.BackgroundTransparency = 1.000
+	DropShadow_2.BorderSizePixel = 0
+	DropShadow_2.Position = UDim2.new(0.5, 0, 0.5, 0)
+	DropShadow_2.Size = UDim2.new(1, 47, 1, 47)
+	DropShadow_2.ZIndex = 4
+	DropShadow_2.Image = "rbxassetid://6014261993"
+	DropShadow_2.ImageColor3 = Color3.fromRGB(0, 0, 0)
+	DropShadow_2.ImageTransparency = 0.500
+	DropShadow_2.ScaleType = Enum.ScaleType.Slice
+	DropShadow_2.SliceCenter = Rect.new(49, 49, 450, 450)
 
-	ImageLabel.Parent = Frame
-	ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	ImageLabel.BackgroundTransparency = 1.000
-	ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	ImageLabel.BorderSizePixel = 0
-	ImageLabel.Position = UDim2.new(0.246263579, 0, 0.297214687, 0)
-	ImageLabel.Size = UDim2.new(0.5, 0, 0.5, 0)
-	ImageLabel.SizeConstraint = Enum.SizeConstraint.RelativeYY
-	ImageLabel.Image = imgtarget
-	ImageLabel.ImageTransparency = 1
-	ImageLabel.ScaleType = Enum.ScaleType.Crop
+	UICorner.Parent = LoadImg
+
+	LoadedFrame.Name = "LoadedFrame"
+	LoadedFrame.Parent = Frame
+	LoadedFrame.BackgroundColor3 = Color3.fromRGB(152, 152, 152)
+	LoadedFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	LoadedFrame.BorderSizePixel = 0
+	LoadedFrame.Position = UDim2.new(-0.0798233747, 0, 0.951086938, 0)
+	LoadedFrame.Size = UDim2.new(0.0500000007, 0, 0.200000003, 0)
+	LoadedFrame.ZIndex = 7
+
+	UICorner_2.Parent = LoadedFrame
+
+	DropShadow_3.Name = "DropShadow"
+	DropShadow_3.Parent = LoadedFrame
+	DropShadow_3.AnchorPoint = Vector2.new(0.5, 0.5)
+	DropShadow_3.BackgroundTransparency = 1.000
+	DropShadow_3.BorderSizePixel = 0
+	DropShadow_3.Position = UDim2.new(0.5, 0, 0.5, 0)
+	DropShadow_3.Size = UDim2.new(1, 47, 1, 47)
+	DropShadow_3.ZIndex = 5
+	DropShadow_3.Image = "rbxassetid://6014261993"
+	DropShadow_3.ImageColor3 = Color3.fromRGB(0, 0, 0)
+	DropShadow_3.ImageTransparency = 0.500
+	DropShadow_3.ScaleType = Enum.ScaleType.Slice
+	DropShadow_3.SliceCenter = Rect.new(49, 49, 450, 450)
 	
-	UICorner_2.CornerRadius = UDim.new(0, 4)
-	UICorner_2.Parent = ImageLabel
+	Title.TextTransparency = 1
+	UnderTitle.TextTransparency = 1
+	LoadImg.ImageTransparency = 1
+	DropShadow.ImageTransparency = 1
+	DropShadow_2.ImageTransparency = 1
+	DropShadow_3.ImageTransparency = 1
+	
+	Frame.Size = UDim2.new(0.1,0,0,0)
+	Frame.BackgroundTransparency = 1
+	
+	local back = Enum.EasingStyle.Back
+	local currntTime = 0.35
+	local ImageTransparencyTarget = 0.5
+	wait(0.1)
+	
+	game:GetService('TweenService'):Create(Frame,TweenInfo.new(currntTime),{
+		BackgroundTransparency = 0
 
-	effect_2.Offset = Vector2.new(-2, 0)
-	effect_2.Rotation = 45
-	effect_2.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(1.00, 1.00)}
-	effect_2.Name = "effect"
-	effect_2.Parent = ImageLabel
+	}):Play()
+	
+	game:GetService('TweenService'):Create(Frame,TweenInfo.new(0.5),{
+		Size = UDim2.new(0.1,0,0.35,0)
+	}):Play()
+	
+	wait(0.55)
+	
+	game:GetService('TweenService'):Create(Frame,TweenInfo.new(0.5,back),{
+		Size = UDim2.new(0.5,0,0.35,0)
+	}):Play()
+	
+	wait(0.5)
+	
+	game:GetService('TweenService'):Create(Title,TweenInfo.new(currntTime),{
+		TextTransparency = 0
 
-	tark.Name = "tark"
-	tark.Parent = Frame
-	tark.BackgroundColor3 = Color3.fromRGB(111, 111, 111)
-	tark.BackgroundTransparency = 0.400
-	tark.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	tark.BorderSizePixel = 0
-	tark.ClipsDescendants = true
-	tark.Position = UDim2.new(0.0212296192, 0, 1.5, 0)
-	tark.Size = UDim2.new(0.949999988, 0, 0.0500000007, 0)
+	}):Play()
+	
+	game:GetService('TweenService'):Create(UnderTitle,TweenInfo.new(currntTime),{
+		TextTransparency = ImageTransparencyTarget
 
-	UICorner_3.CornerRadius = UDim.new(0, 4)
-	UICorner_3.Parent = tark
+	}):Play()
+	
+	game:GetService('TweenService'):Create(LoadImg,TweenInfo.new(currntTime),{
+		ImageTransparency = 0
 
-	move.Name = "move"
-	move.Parent = tark
-	move.AnchorPoint = Vector2.new(0, 0.5)
-	move.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	move.BackgroundTransparency = 0.400
-	move.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	move.BorderSizePixel = 0
-	move.ClipsDescendants = true
-	move.Position = UDim2.new(0, 0, 0.5, 0)
-	move.Size = UDim2.new(0, 0, 2, 0)
+	}):Play()
+	
+	game:GetService('TweenService'):Create(DropShadow,TweenInfo.new(currntTime),{
+		ImageTransparency = ImageTransparencyTarget
 
-	UICorner_4.CornerRadius = UDim.new(0, 4)
-	UICorner_4.Parent = move
+	}):Play()
+	
+	game:GetService('TweenService'):Create(DropShadow_2,TweenInfo.new(currntTime),{
+		ImageTransparency = ImageTransparencyTarget
 
-	return ScreenGui
-end
+	}):Play()
+	
+	game:GetService('TweenService'):Create(DropShadow_3,TweenInfo.new(currntTime),{
+		ImageTransparency = ImageTransparencyTarget
 
-local scriptLoadded = function()
-	local ScreenGui = UI()
-	local Frame = ScreenGui:FindFirstChildWhichIsA('Frame')
-	local tark:Frame,ImageLabel:ImageLabel,title:TextLabel,Loadedtitle:TextLabel = Frame:FindFirstChild('tark'),Frame:FindFirstChild('ImageLabel'),Frame:FindFirstChild('title'),Frame:FindFirstChild('Loadedtitle')
-
-	TweenService:Create(Frame,TweenInfo.new(1.5,Enum.EasingStyle.Back),{Size = UDim2.new(0.4,0,0.4,0)}):Play()
-
-	for i,v : UIGradient in ipairs(Frame:GetDescendants()) do
-		if v:isA('UIGradient') then
-			TweenEffect(v)
-		end
-	end
-
-	TweenService:Create(ImageLabel,TweenInfo.new(0.85,Enum.EasingStyle.Sine),{ImageTransparency = 0}):Play()
-	task.wait(0.85)
-
-	TweenService:Create(tark,TweenInfo.new(0.5,Enum.EasingStyle.Sine),{Position = UDim2.new(0.021, 0,0.896, 0)}):Play()
-
-	TweenText(title,0)
-	TweenText(Loadedtitle,0.4)
-	wait(0.3)
+	}):Play()
+	
+	wait(0.35)
+	
 	for i=1,#TextList do
 		local AddSize = Random.new():NextNumber(0.1,0.2)
-		local OldSize = tark:FindFirstChild('move').Size.X.Scale
-		local NewSize = UDim2.new(OldSize + AddSize,0,2,0)
-		local tween = TweenService:Create(tark:FindFirstChild('move'),TweenInfo.new(AddSize * 1.5,Enum.EasingStyle.Quad),{Size = NewSize})
+		local OldSize = LoadedFrame.Size.X.Scale
+		local NewSize = UDim2.new(OldSize + AddSize,0,0.2,0)
+		local tween = game:GetService('TweenService'):Create(LoadedFrame,TweenInfo.new(AddSize * 1.5,Enum.EasingStyle.Quad),{Size = NewSize})
 		tween:Play()
-		Loadedtitle.Text = TextList[i]
+		UnderTitle.TextTransparency = 0.1
+		UnderTitle.Text = TextList[i]
+		
+		game:GetService('TweenService'):Create(UnderTitle,TweenInfo.new(0.3),{TextTransparency = 0.5}):Play()
 		tween.Completed:Wait()
 		wait(0.1)
 	end
-	wait(0.1)
-	coroutine.wrap(function()
-		Loadedtitle.Text = "wait for UI"
-		TweenService:Create(tark:FindFirstChild('move'),TweenInfo.new(0.4,Enum.EasingStyle.Quad),{Size = UDim2.new(2,0,2,0)}):Play()
+	
+	game:GetService('TweenService'):Create(LoadedFrame,TweenInfo.new(1.5,Enum.EasingStyle.Quad),{Size = UDim2.new(1.2,0,0.2,0)}):Play()
+	
+	wait(0.55)
+	
+	game:GetService('TweenService'):Create(LoadedFrame,TweenInfo.new(1.5,Enum.EasingStyle.Quad),{BackgroundTransparency = 1}):Play()
+	
+	
+	local currntTime = 0.35
+	local ImageTransparencyTarget = 1
+	
+	game:GetService('TweenService'):Create(Title,TweenInfo.new(currntTime),{
+		TextTransparency = 1
 
-		wait(0.9)
+	}):Play()
 
-		TweenText(title,1)
-		TweenText(Loadedtitle,1)
-		TweenService:Create(tark,TweenInfo.new(0.5,Enum.EasingStyle.Sine),{Position = UDim2.new(0.021, 0,1.5, 0)}):Play()
+	game:GetService('TweenService'):Create(UnderTitle,TweenInfo.new(currntTime),{
+		TextTransparency = ImageTransparencyTarget
 
-		for i,v : UIGradient in ipairs(Frame:GetDescendants()) do
-			if v:isA('UIGradient') then
-				TweenEffectEnd(v)
-			end
-		end
+	}):Play()
 
-		TweenService:Create(Frame,TweenInfo.new(1.5,Enum.EasingStyle.Back),{Size = UDim2.new(0.3,0,0.3,0)}):Play()
+	game:GetService('TweenService'):Create(LoadImg,TweenInfo.new(currntTime),{
+		ImageTransparency = 1
 
-		wait(1)
-		ScreenGui:Destroy()
-	end)()
+	}):Play()
 
-	if not game:IsLoaded() then
-		print('Loading Game')
-		game.Loaded:Wait()
-	end
+	game:GetService('TweenService'):Create(DropShadow,TweenInfo.new(currntTime),{
+		ImageTransparency = ImageTransparencyTarget
 
-	if not game:FindFirstChild('Workspace') then
-		print('wait for object')
-		game:WaitForChild('Workspace',9999)
-	end
+	}):Play()
 
+	game:GetService('TweenService'):Create(DropShadow_2,TweenInfo.new(currntTime),{
+		ImageTransparency = ImageTransparencyTarget
+
+	}):Play()
+
+	game:GetService('TweenService'):Create(DropShadow_3,TweenInfo.new(currntTime),{
+		ImageTransparency = ImageTransparencyTarget
+
+	}):Play()
+
+	wait(0.55)
+
+	game:GetService('TweenService'):Create(Frame,TweenInfo.new(0.5,back,Enum.EasingDirection.InOut),{
+		Size =  UDim2.new(0.1,0,0.35,0)
+	}):Play()
+
+	wait(0.75)
+	
+	game:GetService('TweenService'):Create(Frame,TweenInfo.new(0.5),{
+		Size = UDim2.new(0.1,0,0,0)
+	}):Play()
+	
+	wait(0.45)
+	
+	game:GetService('TweenService'):Create(Frame,TweenInfo.new(currntTime),{
+		BackgroundTransparency = 1
+
+	}):Play()
+	
+	
+	wait(1)
+	
+	ScreenGui:Destroy()
 end
 
-return scriptLoadded()
+coroutine.wrap(function()
+	start()
+end)()
+
+wait(1.55)
+
+return
